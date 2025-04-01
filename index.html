@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Dhruvrajsinh Rana - Computer Science Engineer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+</head>
+<body>
+    <div class="cursor" id="cursor"></div>
+    <div class="progress-bar" id="progress-bar"></div>
+    
+    <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
+    <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </button>
+    
+    <nav class="mobile-nav" id="mobile-nav">
+        <ul>
+            <li><a href="#projects" class="mobile-nav-link">Projects</a></li>
+            <li><a href="#experience" class="mobile-nav-link">Experience</a></li>
+            <li><a href="#education" class="mobile-nav-link">Education</a></li>
+            <li><a href="#skills" class="mobile-nav-link">Skills</a></li>
+            <li><a href="#certifications" class="mobile-nav-link">Certifications</a></li>
+            <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
+            <li>
+                <div class="mobile-theme-toggle">
+                    <span>Toggle Theme</span>
+                    <div class="theme-switch-wrapper-mobile">
+                        <label class="theme-switch" for="checkbox-mobile">
+                            <input type="checkbox" id="checkbox-mobile" />
+                            <div class="slider round"></div>
+                        </label>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <header>
+            <div class="header-top">
+                <a href="#" class="back-link" id="resume-download">📄 Download Resume</a>
+                <div class="theme-switch-wrapper">
+                    <label class="theme-switch" for="checkbox">
+                        <input type="checkbox" id="checkbox" />
+                        <div class="slider round"></div>
+                    </label>
+                    <span class="theme-label">Light Mode</span>
+                </div>
+            </div>
+            <h1>DHRUVRAJ SINH RANA</h1>
+            <p class="subtitle">Computer Science Engineering Student | IoT Specialist</p>
+            <p class="years">2022 - 2026 | Vellore Institute of Technology</p>
+            <p class="intro">
+                Computer Science Engineering student specializing in Internet of Things (IoT) with a strong foundation in Java, web technologies, and cloud platforms. Experienced in team leadership and full-stack development with a focus on creating practical, user-friendly applications. If you'd like to contact me, email me at <a href="mailto:dhruvrana.rana@gmail.com" class="email-link"><strong>dhruvrana.rana@gmail.com</strong></a>.
+            </p>
+        </header>
+
+        <section class="projects" id="projects">
+            <div class="projects-header">
+                <div class="section-header">
+                    <h2>Project</h2>
+                    <h2>Technologies</h2>
+                    <h2>Year</h2>
+                </div>
+                <div class="project-filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="golang">Golang</button>
+                    <button class="filter-btn" data-filter="java">Java</button>
+                    <button class="filter-btn" data-filter="fullstack">Full-Stack</button>
+                </div>
+            </div>
+            <div class="project-grid">
+                <div class="project-row" data-category="golang fullstack">
+                    <div class="project-name">
+                        <span class="mobile-section-label">Project:</span>
+                        <a href="https://github.com/nickawvwoo/HOSPITAL-MANAGEMENT" target="_blank">HealthHub</a>
+                    </div>
+                    <div class="project-role">
+                        <span class="mobile-section-label">Technologies:</span>
+                        Golang, Postgres
+                    </div>
+                    <div class="project-year">
+                        <span class="mobile-section-label">Year:</span>
+                        2023
+                    </div>
+                </div>
+                <div class="project-row" data-category="golang fullstack">
+                    <div class="project-name"><a href="https://github.com/nickawvwoo/DocHub" target="_blank">Collaborative Docs</a></div>
+                    <div class="project-role">Golang, Quil Editor, Postgres, Docker</div>
+                    <div class="project-year">2023</div>
+                </div>
+                <div class="project-row" data-category="java fullstack">
+                    <div class="project-name"><a href="https://github.com/nickawvwoo/Pharmacy_System" target="_blank">Pharmacy System</a></div>
+                    <div class="project-role">Java, Spring Boot, Quil Editor</div>
+                    <div class="project-year">2024</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Gallery Section -->
+        <section class="portfolio-gallery">
+            <h2>Featured Projects</h2>
+            <div class="gallery-container">
+                <div class="gallery-item">
+                    <a href="https://github.com/nickawvwoo/HOSPITAL-MANAGEMENT" target="_blank">
+                        <div class="project-image" style="background-color: #445533;">
+                            <div class="project-overlay">
+                                <h3>HealthHub</h3>
+                                <p>Online doctor appointment booking platform</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="gallery-item">
+                    <a href="https://github.com/nickawvwoo/DocHub" target="_blank">
+                        <div class="project-image" style="background-color: #335544;">
+                            <div class="project-overlay">
+                                <h3>Collaborative Docs</h3>
+                                <p>Real-time collaborative documentation platform</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="gallery-item">
+                    <a href="https://github.com/nickawvwoo/Pharmacy_System" target="_blank">
+                        <div class="project-image" style="background-color: #553344;">
+                            <div class="project-overlay">
+                                <h3>Pharmacy System</h3>
+                                <p>E-commerce platform for medicines</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="gallery-item">
+                    <div class="project-image" style="background-color: #443355;">
+                        <div class="project-overlay">
+                            <h3>AWS Certification</h3>
+                            <p>Solutions Architect - Associate (SAA-C03)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="experience" id="experience">
+            <div class="section-header">
+                <h2>Experience</h2>
+                <h2>Title</h2>
+                <h2>Year</h2>
+            </div>
+            <div class="experience-grid">
+                <div class="experience-row">
+                    <div class="company-name">
+                        <span class="mobile-section-label">Company:</span>
+                        Kunnismart Solutions Pvt ltd
+                    </div>
+                    <div class="job-title">
+                        <span class="mobile-section-label">Title:</span>
+                        Technical Lead Intern
+                    </div>
+                    <div class="job-years">
+                        <span class="mobile-section-label">Period:</span>
+                        Feb 2024 → Present
+                    </div>
+                </div>
+                <div class="experience-row">
+                    <div class="company-name">Entrepreneurship Cell, VIT</div>
+                    <div class="job-title">Director of Research and Development</div>
+                    <div class="job-years">Aug 2024 → Jan 2025</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Education Section -->
+        <section class="experience" id="education">
+            <div class="section-header">
+                <h2>Education</h2>
+                <h2>Degree</h2>
+                <h2>Year</h2>
+            </div>
+            <div class="experience-grid">
+                <div class="experience-row">
+                    <div class="company-name">Vellore Institute of Technology</div>
+                    <div class="job-title">B.Tech Computer Science (IoT)<br><span style="font-size: 0.85rem; color: var(--secondary-text);">GPA: 8.78</span></div>
+                    <div class="job-years">2022 → 2026</div>
+                </div>
+                <div class="experience-row">
+                    <div class="company-name">Delhi Public School</div>
+                    <div class="job-title">Class XII<br><span style="font-size: 0.85rem; color: var(--secondary-text);">Aggregate: 93.7</span></div>
+                    <div class="job-years">2019 → 2021</div>
+                </div>
+                <div class="experience-row">
+                    <div class="company-name">Delhi Public School</div>
+                    <div class="job-title">Class X<br><span style="font-size: 0.85rem; color: var(--secondary-text);">Aggregate: 89.8</span></div>
+                    <div class="job-years">2007 → 2019</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Skills Section -->
+        <section class="skills-section" id="skills">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <div class="skill-items">
+                        <span class="skill-item">Java (Expert)</span>
+                        <span class="skill-item">HTML/CSS (Intermediate)</span>
+                        <span class="skill-item">SQL (Intermediate)</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Frameworks & Libraries</h3>
+                    <div class="skill-items">
+                        <span class="skill-item">Spring Boot</span>
+                        <span class="skill-item">React</span>
+                        <span class="skill-item">Hibernate</span>
+                        <span class="skill-item">Junit</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Development Tools</h3>
+                    <div class="skill-items">
+                        <span class="skill-item">Git (Expert)</span>
+                        <span class="skill-item">Maven</span>
+                        <span class="skill-item">Gradle</span>
+                        <span class="skill-item">Docker</span>
+                        <span class="skill-item">Swagger</span>
+                        <span class="skill-item">Kubernetes</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Databases & Cloud</h3>
+                    <div class="skill-items">
+                        <span class="skill-item">MySQL (Advanced)</span>
+                        <span class="skill-item">PostgreSQL</span>
+                        <span class="skill-item">Redis</span>
+                        <span class="skill-item">AWS</span>
+                        <span class="skill-item">EC2, S3, Lambda</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section class="experience" id="certifications">
+            <div class="section-header">
+                <h2>Certification</h2>
+                <h2>Issuer</h2>
+                <h2>Platform</h2>
+            </div>
+            <div class="experience-grid">
+                <div class="experience-row">
+                    <div class="company-name">AWS Solutions Architect - Associate (SAA-C03)</div>
+                    <div class="job-title">Amazon Web Services</div>
+                    <div class="job-years">AWS</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Testimonials Section -->
+        <section class="testimonials">
+            <h2>Testimonials</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-item">
+                    <p class="testimonial-text">"Maxim's ability to understand our vision and translate it into a beautiful, functional design was remarkable. His development skills are equally impressive, delivering a website that exceeded our expectations."</p>
+                    <div class="testimonial-author">
+                        <p class="author-name">Sarah Johnson</p>
+                        <p class="author-title">CEO, Elroy</p>
+                    </div>
+                </div>
+                <div class="testimonial-item">
+                    <p class="testimonial-text">"Working with Maxim was a game-changer for our brand. His thoughtful approach to design and attention to detail resulted in a product that truly resonates with our audience. I can't recommend him enough."</p>
+                    <div class="testimonial-author">
+                        <p class="author-name">Michael Chen</p>
+                        <p class="author-title">Marketing Director, Peggy</p>
+                    </div>
+                </div>
+                <div class="testimonial-item">
+                    <p class="testimonial-text">"Maxim brings a rare combination of design excellence and technical expertise to every project. His ability to solve complex problems while maintaining a clear, elegant aesthetic makes him an invaluable partner."</p>
+                    <div class="testimonial-author">
+                        <p class="author-name">Emma Roberts</p>
+                        <p class="author-title">Product Lead, Tailscale</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="services-clients">
+            <div class="services">
+                <h2>Services</h2>
+                <ul>
+                    <li>Art Direction</li>
+                    <li>Corporate Identity</li>
+                    <li>Product Design</li>
+                    <li>Web Design</li>
+                    <li>Web Development</li>
+                </ul>
+            </div>
+            <div class="clients">
+                <h2>Selected Clients</h2>
+                <ul>
+                    <li>Google</li>
+                    <li>VICE</li>
+                    <li>Obama Foundation</li>
+                    <li>MSCHF</li>
+                    <li>Automattic</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="links">
+            <h2>Links</h2>
+            <ul>
+                <li><a href="https://twitter.com/" target="_blank">Twitter</a></li>
+                <li><a href="https://linkedin.com/" target="_blank">LinkedIn</a></li>
+                <li><a href="https://dribbble.com/" target="_blank">Dribbble</a></li>
+                <li><a href="mailto:maxim@hey.com">Email</a></li>
+            </ul>
+        </section>
+
+        <!-- Work Process Section -->
+        <section class="work-process">
+            <h2>My Process</h2>
+            <div class="process-grid">
+                <div class="process-item">
+                    <div class="process-number">01</div>
+                    <h3>Discovery</h3>
+                    <p>I begin every project with thorough research to understand your business goals, target audience, and competitive landscape. This phase helps establish clear objectives and metrics for success.</p>
+                </div>
+                <div class="process-item">
+                    <div class="process-number">02</div>
+                    <h3>Strategy</h3>
+                    <p>Based on discovery insights, I develop a strategic approach that aligns your business objectives with user needs. This includes information architecture, user flows, and content planning.</p>
+                </div>
+                <div class="process-item">
+                    <div class="process-number">03</div>
+                    <h3>Design</h3>
+                    <p>I create comprehensive design systems with pixel-perfect mockups that translate strategy into visual solutions. Each element is crafted with intention, maintaining consistency across all touchpoints.</p>
+                </div>
+                <div class="process-item">
+                    <div class="process-number">04</div>
+                    <h3>Development</h3>
+                    <p>Clean, efficient code brings the designs to life, ensuring optimal performance, accessibility, and seamless interactions. I build responsive websites that work flawlessly across all devices.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Form Section -->
+        <section class="contact-section" id="contact">
+            <h2>Get in Touch</h2>
+            <p class="contact-intro">Interested in working together? Fill out the form below and I'll get back to you soon.</p>
+            
+            <form id="contact-form" class="contact-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="consent" name="consent" required>
+                    <label for="consent">I agree to the processing of my data as outlined in the privacy policy.</label>
+                </div>
+                
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>Gatineau, 12:45 ET</p>
+            <div class="footer-right">
+                <p class="made-with-love">Made with ❤️ by Dhruvraj</p>
+                <p><a href="mailto:dhruvrana.rana@gmail.com">dhruvrana.rana@gmail.com</a> | <a href="https://www.linkedin.com/in/dhruv-raj-rana" target="_blank">LinkedIn</a></p>
+            </div>
+        </footer>
+    </div>
+    
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 3L14 9L12.6 10.4L8.7 6.5L8.7 13L7.3 13L7.3 6.5L3.4 10.4L2 9L8 3Z" fill="currentColor"/>
+        </svg>
+    </button>
+    
+    <script src="script.js"></script>
+</body>
+</html> 
