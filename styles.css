@@ -1418,11 +1418,14 @@ footer {
     padding: 0.75rem 0;
     border-bottom: 1px solid var(--border-color);
     margin-top: 1.5rem;
+    width: 100%; /* Ensure it takes full width */
+    min-height: 44px; /* Better touch target size */
 }
 
 .theme-switch-wrapper-mobile {
     display: flex;
     align-items: center;
+    min-width: 60px; /* Ensure minimum width for the toggle */
 }
 
 .mobile-menu-overlay {
@@ -1440,4 +1443,68 @@ footer {
 
 .mobile-menu-overlay.active {
     opacity: 1;
+}
+
+/* Extra small devices (phones) */
+@media (max-width: 480px) {
+    .mobile-nav {
+        width: 85%; /* Wider nav on very small screens */
+    }
+    
+    .mobile-theme-toggle {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .mobile-theme-toggle span {
+        font-size: 14px;
+    }
+    
+    .theme-switch-wrapper-mobile {
+        margin-left: auto; /* Push to the right */
+    }
+    
+    /* Ensure the theme toggle is always visible in mobile menu */
+    #checkbox-mobile {
+        opacity: 1;
+        position: relative;
+        height: auto;
+        width: auto;
+        margin: 0;
+    }
+}
+
+/* Ultra small mobile devices (phones below 360px) */
+@media (max-width: 360px) {
+    .mobile-theme-toggle {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        padding: 12px 0;
+    }
+    
+    .theme-switch-wrapper-mobile {
+        margin-left: 0;
+        align-self: flex-start;
+    }
+    
+    .mobile-theme-toggle span {
+        font-weight: 600;
+        font-size: 16px;
+    }
+    
+    .theme-switch {
+        width: 48px; /* Larger switch */
+        height: 26px;
+    }
+    
+    .slider:before {
+        height: 20px;
+        width: 20px;
+    }
+    
+    input:checked + .slider:before {
+        transform: translateX(22px);
+    }
 } 
