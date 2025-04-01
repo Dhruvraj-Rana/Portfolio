@@ -70,10 +70,6 @@ The website is easy to customize:
 
 MIT License
 
-## Acknowledgements
-
-- Design inspiration from [Maxim Siebert](https://maximsiebert.com/)
-- Font by [Inter](https://fonts.google.com/specimen/Inter)
 
 ---
 
