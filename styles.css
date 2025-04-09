@@ -9,16 +9,93 @@
     --primary-color-rgb: 64, 100, 33;
     --secondary-color-rgb: 33, 64, 100;
     --process-number-color: rgba(0, 0, 0, 0.2);
+    --loader-color: #243513;
 }
 
-.dark-theme {
-    --bg-color: #243513;
-    --text-color: #ffffff;
-    --secondary-text: #aaaaaa;
-    --border-color: #3a4d2c;
+/* Dark Theme Colors */
+[data-theme="dark"] {
+    --bg-color: #0a192f;
+    --text-color: #ccd6f6;
+    --secondary-text: #8892b0;
+    --border-color: #233554;
     --accent-color: rgba(255, 255, 255, 0.1);
     --link-border: #ffffff;
+    --primary-color-rgb: 100, 255, 218;
+    --secondary-color-rgb: 136, 146, 176;
     --process-number-color: rgba(255, 255, 255, 0.2);
+    --loader-color: #64ffda;
+    --primary-color: #64ffda;
+    --secondary-color: #8892b0;
+    --background-color: #0a192f;
+    --surface-color: #112240;
+    --text-secondary: #8892b0;
+    --hover-color: #64ffda;
+    --card-bg: #112240;
+    --card-border: #233554;
+    --card-hover: #1d3461;
+    --loader-bg: #0a192f;
+}
+
+/* Page Loader */
+.page-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.page-loader.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.loader-logo {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--loader-color);
+    letter-spacing: 0.1rem;
+}
+
+.loader-bar {
+    width: 120px;
+    height: 2px;
+    background-color: var(--border-color);
+    border-radius: 1px;
+    overflow: hidden;
+    position: relative;
+}
+
+.loader-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0%;
+    background-color: var(--loader-color);
+    animation: loading 1.5s ease-in-out forwards;
+}
+
+@keyframes loading {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
 }
 
 html, body {
@@ -49,16 +126,12 @@ body {
     position: fixed;
     width: 0.5rem;
     height: 0.5rem;
-    background-color: #243513; /* Dark green cursor in light mode */
+    background-color: var(--text-color);
     border-radius: 50%;
     pointer-events: none;
     transform: translate(-50%, -50%);
     z-index: 9999;
     transition: width 0.15s ease, height 0.15s ease, opacity 0.15s ease, background-color 0.3s ease;
-}
-
-.dark-theme .cursor {
-    background-color: #ffffff; /* White cursor in dark mode */
 }
 
 /* Theme toggle styles */
@@ -406,11 +479,6 @@ header {
         display: none;
     }
     
-    .services-clients {
-        flex-direction: column;
-        gap: 2.5rem;
-    }
-    
     .gallery-container {
         grid-template-columns: 1fr;
         gap: 1.5rem;
@@ -465,10 +533,6 @@ header {
     }
     
     .container {
-        gap: 2rem;
-    }
-    
-    .services-clients {
         gap: 2rem;
     }
 }
@@ -546,29 +610,23 @@ header {
 }
 
 /* Services and Clients section */
-.services-clients {
-    display: flex;
-    gap: 5rem;
-    margin-top: 1rem;
+.links h2 {
+    margin-bottom: 1.2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
 }
 
-.services h2, .clients h2, .links h2 {
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
-    color: var(--secondary-text);
+.links {
+    margin-bottom: 2rem;
 }
 
-.services, .clients {
-    flex: 1;
-}
-
-.services ul, .clients ul, .links ul {
+.links ul {
     display: flex;
     flex-direction: column;
     gap: 0.7rem;
 }
 
-.services li, .clients li, .links li {
+.links li {
     color: var(--text-color);
     font-size: 0.95rem;
 }
@@ -661,7 +719,7 @@ footer {
 
 /* Work Process Section */
 .work-process {
-    margin: 1rem 0 3rem;
+    margin-top: 2rem;
     position: relative;
 }
 
@@ -984,83 +1042,6 @@ footer {
     transform: scale(6);
 }
 
-/* Testimonials Section */
-.testimonials {
-    margin: 2rem 0 3rem;
-}
-
-.testimonials h2 {
-    font-size: 0.9rem;
-    margin-bottom: 2rem;
-    color: var(--secondary-text);
-}
-
-.testimonials-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2.5rem;
-}
-
-.testimonial-item {
-    padding: 1.75rem;
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    transition: transform 0.2s ease, border-color 0.2s ease;
-}
-
-.testimonial-item:hover {
-    transform: translateY(-3px);
-    border-color: var(--text-color);
-}
-
-.testimonial-text {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: var(--text-color);
-    margin-bottom: 1.5rem;
-    font-style: italic;
-}
-
-.testimonial-author {
-    border-top: 1px solid var(--border-color);
-    padding-top: 1rem;
-}
-
-.author-name {
-    font-weight: 500;
-    font-size: 0.9rem;
-    margin-bottom: 0.2rem;
-    color: var(--text-color);
-}
-
-.author-title {
-    font-size: 0.85rem;
-    color: var(--secondary-text);
-}
-
-/* Responsive Adjustments */
-@media (max-width: 992px) {
-    .testimonials-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 768px) {
-    .skills-grid {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
-    }
-    
-    .testimonials-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-    
-    .testimonial-item {
-        padding: 1.5rem;
-    }
-}
-
 /* Progress bar */
 .progress-bar {
     position: fixed;
@@ -1249,18 +1230,6 @@ footer {
         grid-template-columns: 1fr;
     }
     
-    .testimonials-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .services-clients {
-        flex-direction: column;
-    }
-    
-    .services, .clients {
-        width: 100%;
-    }
-    
     .process-grid {
         grid-template-columns: 1fr;
     }
@@ -1440,4 +1409,42 @@ footer {
 
 .mobile-menu-overlay.active {
     opacity: 1;
+}
+
+.links h2 {
+    margin-bottom: 1.2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.links {
+    margin-bottom: 2rem;
+}
+
+.links ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+
+.links li {
+    color: var(--text-color);
+    font-size: 0.95rem;
+}
+
+/* Update loader colors in dark mode */
+[data-theme="dark"] .page-loader {
+    background-color: var(--loader-bg);
+}
+
+[data-theme="dark"] .loader-logo {
+    color: var(--loader-color);
+}
+
+[data-theme="dark"] .loader-bar {
+    background-color: var(--border-color);
+}
+
+[data-theme="dark"] .loader-progress {
+    background-color: var(--loader-color);
 } 

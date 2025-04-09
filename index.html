@@ -8,6 +8,16 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
 </head>
 <body>
+    <!-- Page Loader -->
+    <div class="page-loader" id="page-loader">
+        <div class="loader-content">
+            <div class="loader-logo">DR</div>
+            <div class="loader-bar">
+                <div class="loader-progress"></div>
+            </div>
+        </div>
+    </div>
+
     <div class="cursor" id="cursor"></div>
     <div class="progress-bar" id="progress-bar"></div>
     
@@ -75,7 +85,7 @@
                 </div>
             </div>
             <div class="project-grid">
-                <div class="project-row" data-category="golang fullstack">
+                <div class="project-row" data-category="golang">
                     <div class="project-name">
                         <span class="mobile-section-label">Project:</span>
                         <a href="https://github.com/nickawvwoo/HOSPITAL-MANAGEMENT" target="_blank">HealthHub</a>
@@ -190,14 +200,14 @@
                     <div class="job-years">2022 → 2026</div>
                 </div>
                 <div class="experience-row">
-                    <div class="company-name">Delhi Public School</div>
+                    <div class="company-name">Delhi Public School, Bharuch</div>
                     <div class="job-title">Class XII<br><span style="font-size: 0.85rem; color: var(--secondary-text);">Aggregate: 93.7</span></div>
                     <div class="job-years">2019 → 2021</div>
                 </div>
                 <div class="experience-row">
-                    <div class="company-name">Delhi Public School</div>
+                    <div class="company-name">Delhi Public School, Bharuch</div>
                     <div class="job-title">Class X<br><span style="font-size: 0.85rem; color: var(--secondary-text);">Aggregate: 89.8</span></div>
-                    <div class="job-years">2007 → 2019</div>
+                    <div class="job-years">2018 → 2019</div>
                 </div>
             </div>
         </section>
@@ -263,57 +273,6 @@
             </div>
         </section>
         
-        <!-- Testimonials Section -->
-        <section class="testimonials">
-            <h2>Testimonials</h2>
-            <div class="testimonials-grid">
-                <div class="testimonial-item">
-                    <p class="testimonial-text">"Maxim's ability to understand our vision and translate it into a beautiful, functional design was remarkable. His development skills are equally impressive, delivering a website that exceeded our expectations."</p>
-                    <div class="testimonial-author">
-                        <p class="author-name">Sarah Johnson</p>
-                        <p class="author-title">CEO, Elroy</p>
-                    </div>
-                </div>
-                <div class="testimonial-item">
-                    <p class="testimonial-text">"Working with Maxim was a game-changer for our brand. His thoughtful approach to design and attention to detail resulted in a product that truly resonates with our audience. I can't recommend him enough."</p>
-                    <div class="testimonial-author">
-                        <p class="author-name">Michael Chen</p>
-                        <p class="author-title">Marketing Director, Peggy</p>
-                    </div>
-                </div>
-                <div class="testimonial-item">
-                    <p class="testimonial-text">"Maxim brings a rare combination of design excellence and technical expertise to every project. His ability to solve complex problems while maintaining a clear, elegant aesthetic makes him an invaluable partner."</p>
-                    <div class="testimonial-author">
-                        <p class="author-name">Emma Roberts</p>
-                        <p class="author-title">Product Lead, Tailscale</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="services-clients">
-            <div class="services">
-                <h2>Services</h2>
-                <ul>
-                    <li>Art Direction</li>
-                    <li>Corporate Identity</li>
-                    <li>Product Design</li>
-                    <li>Web Design</li>
-                    <li>Web Development</li>
-                </ul>
-            </div>
-            <div class="clients">
-                <h2>Selected Clients</h2>
-                <ul>
-                    <li>Google</li>
-                    <li>VICE</li>
-                    <li>Obama Foundation</li>
-                    <li>MSCHF</li>
-                    <li>Automattic</li>
-                </ul>
-            </div>
-        </section>
-
         <section class="links">
             <h2>Links</h2>
             <ul>
@@ -341,7 +300,7 @@
                 <div class="process-item">
                     <div class="process-number">03</div>
                     <h3>Design</h3>
-                    <p>I create comprehensive design systems with pixel-perfect mockups that translate strategy into visual solutions. Each element is crafted with intention, maintaining consistency across all touchpoints.</p>
+                    <p>I create comprehensive design systems that translate strategy into visual solutions. Each element is crafted with intention, maintaining consistency across all touchpoints.</p>
                 </div>
                 <div class="process-item">
                     <div class="process-number">04</div>
@@ -351,12 +310,21 @@
             </div>
         </section>
 
-        <!-- Contact Form Section -->
+        <!-- Contact Form -->
         <section class="contact-section" id="contact">
             <h2>Get in Touch</h2>
             <p class="contact-intro">Interested in working together? Fill out the form below and I'll get back to you soon.</p>
             
-            <form id="contact-form" class="contact-form">
+            <form id="contact-form" class="contact-form" action="https://formsubmit.co/hackerguyin1234@gmail.com" method="POST">
+                <!-- Honeypot to prevent spam -->
+                <input type="text" name="_honey" style="display:none">
+                
+                <!-- Disable Captcha -->
+                <input type="hidden" name="_captcha" value="false">
+                
+                <!-- Success page -->
+                <input type="hidden" name="_next" value="https://yourdomain.com/thanks.html">
+                
                 <div class="form-row">
                     <div class="form-group">
                         <label for="name">Name</label>

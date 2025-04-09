@@ -1,5 +1,23 @@
 // Update the year in copyright footer
 document.addEventListener('DOMContentLoaded', () => {
+    // Page loader functionality
+    const pageLoader = document.getElementById('page-loader');
+    
+    if (pageLoader) {
+        // Hide loader after content is loaded
+        window.addEventListener('load', () => {
+            // Add a small delay for a smoother experience
+            setTimeout(() => {
+                pageLoader.classList.add('hidden');
+                
+                // Remove from DOM after animation completes
+                setTimeout(() => {
+                    pageLoader.style.display = 'none';
+                }, 500);
+            }, 1500); // Match this with the animation duration
+        });
+    }
+    
     // Get user's location and update time
     const updateLocationAndTime = () => {
         const now = new Date();
@@ -103,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Check if user preference already exists
         const currentTheme = localStorage.getItem('theme');
         if (currentTheme) {
-            document.body.classList.toggle('dark-theme', currentTheme === 'dark');
+            document.documentElement.setAttribute('data-theme', currentTheme);
             checkbox.checked = currentTheme === 'dark';
             if (checkboxMobile) checkboxMobile.checked = currentTheme === 'dark';
             themeLabel.textContent = currentTheme === 'dark' ? 'Dark Mode' : 'Light Mode';
@@ -111,8 +129,8 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Toggle theme when checkbox changes
         checkbox.addEventListener('change', () => {
-            document.body.classList.toggle('dark-theme');
-            const theme = document.body.classList.contains('dark-theme') ? 'dark' : 'light';
+            const theme = checkbox.checked ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', theme);
             localStorage.setItem('theme', theme);
             themeLabel.textContent = theme === 'dark' ? 'Dark Mode' : 'Light Mode';
             
@@ -123,8 +141,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Sync mobile theme toggle
         if (checkboxMobile) {
             checkboxMobile.addEventListener('change', () => {
-                document.body.classList.toggle('dark-theme');
-                const theme = document.body.classList.contains('dark-theme') ? 'dark' : 'light';
+                const theme = checkboxMobile.checked ? 'dark' : 'light';
+                document.documentElement.setAttribute('data-theme', theme);
                 localStorage.setItem('theme', theme);
                 themeLabel.textContent = theme === 'dark' ? 'Dark Mode' : 'Light Mode';
                 
@@ -209,7 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // Create resume data with Dhruvraj's information
             const resumeData = {
-                name: "DHRUVRAJ SINH RANA",
+                name: "DHRUVRAJSINH RANA",
                 contact: {
                     email: "dhruvrana.rana@gmail.com",
                     phone: "9484553365",
@@ -395,4 +413,22 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     
     initProjectFilters();
+
+    // Contact form submission
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            const submitBtn = contactForm.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+            
+            // Form will submit normally to FormSubmit
+            // The button will reset after 3 seconds if there's an error
+            setTimeout(() => {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }, 3000);
+        });
+    }
 }); 
