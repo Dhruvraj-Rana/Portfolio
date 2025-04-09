@@ -231,13 +231,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 contact: {
                     email: "dhruvrana.rana@gmail.com",
                     phone: "9484553365",
-                    linkedin: "www.linkedin.com/in/dhruv-raj-rana",
+                    linkedin: "www.linkedin.com/in/dhruvraj-rana",
                     location: "Gujarat, India"
                 },
                 education: [
-                    { institution: "Vellore Institute of Technology", degree: "B.Tech Computer Science and Engineering with Specialization in IoT (Internet of Things)", gpa: "8.74", period: "2022 - 2026", location: "Vellore" },
+                    { institution: "Vellore Institute of Technology", degree: "B.Tech Computer Science and Engineering with Specialization in IoT (Internet of Things)", gpa: "8.78", period: "2022 - 2026", location: "Vellore" },
                     { institution: "Delhi Public School", degree: "Class XII", aggregate: "93.7", period: "2019 - 2021", location: "Bharuch" },
-                    { institution: "Delhi Public School", degree: "Class X", aggregate: "88.0", period: "2007 - 2019", location: "Bharuch" }
+                    { institution: "Delhi Public School", degree: "Class X", aggregate: "88.0", period: "2018 - 2019", location: "Bharuch" }
                 ],
                 work_experience: [
                     { 
