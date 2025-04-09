@@ -1447,4 +1447,167 @@ footer {
 
 [data-theme="dark"] .loader-progress {
     background-color: var(--loader-color);
+}
+
+/* Tech or Pokemon Game Styles */
+.game-dropdown {
+    margin: 2rem 0 4rem;
+    width: 100%;
+}
+
+.game-dropdown-btn {
+    width: 100%;
+    padding: 1rem 2rem;
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-color);
+    font-size: 1.1rem;
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.game-dropdown-btn:hover {
+    background-color: var(--accent-color);
+    border-color: var(--text-color);
+}
+
+.dropdown-arrow {
+    transition: transform 0.3s ease;
+}
+
+.game-dropdown-btn.active .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+.tech-pokemon-game {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out;
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+}
+
+.tech-pokemon-game.active {
+    max-height: 2000px; /* Adjust this value based on your content */
+    padding: 2rem;
+    margin-top: -1px;
+    border-top: 1px solid var(--border-color);
+}
+
+.tech-pokemon-game h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.game-intro {
+    font-size: 1.1rem;
+    color: var(--secondary-text);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.game-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.score-display {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.tech-item {
+    padding: 1rem;
+    background-color: var(--accent-color);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: var(--text-color);
+    font-size: 0.95rem;
+}
+
+.tech-item:hover {
+    transform: translateY(-2px);
+    border-color: var(--text-color);
+}
+
+.tech-item.correct {
+    background-color: #4CAF50;
+    color: white;
+    border-color: #45a049;
+}
+
+.tech-item.incorrect {
+    background-color: #f44336;
+    color: white;
+    border-color: #da190b;
+}
+
+.tech-item.revealed {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.reset-game {
+    display: block;
+    margin: 2rem auto;
+    padding: 0.8rem 1.5rem;
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.reset-game:hover {
+    background-color: var(--border-color);
+    transform: translateY(-2px);
+}
+
+.game-message {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    color: var(--text-color);
+    min-height: 1.5em;
+}
+
+@media (max-width: 768px) {
+    .tech-pokemon-game {
+        padding: 1.5rem;
+        margin: 1.5rem 0 3rem;
+    }
+
+    .tech-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 0.8rem;
+    }
+
+    .tech-item {
+        padding: 0.8rem;
+        font-size: 0.9rem;
+    }
 } 

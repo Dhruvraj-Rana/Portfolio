@@ -431,4 +431,135 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 3000);
         });
     }
+
+    // Tech or Pokemon Game
+    const initTechPokemonGame = () => {
+        const techGrid = document.getElementById('tech-grid');
+        const scoreDisplay = document.getElementById('score');
+        const highScoreDisplay = document.getElementById('high-score');
+        const resetButton = document.getElementById('reset-game');
+        const gameMessage = document.getElementById('game-message');
+
+        // List of terms from the image
+        const terms = [
+            { name: 'python', isPokemon: false },
+            { name: 'javascript', isPokemon: false },
+            { name: 'shiny', isPokemon: false },
+            { name: 'dplyr', isPokemon: false },
+            { name: 'purrr', isPokemon: false },
+            { name: 'ditto', isPokemon: true },
+            { name: 'ggplot', isPokemon: false },
+            { name: 'd3', isPokemon: false },
+            { name: 'canvas', isPokemon: false },
+            { name: 'spark', isPokemon: false },
+            { name: 'sawk', isPokemon: true },
+            { name: 'pyspark', isPokemon: false },
+            { name: 'sparklyR', isPokemon: false },
+            { name: 'lodash', isPokemon: false },
+            { name: 'lazy', isPokemon: false },
+            { name: 'bootstrap', isPokemon: false },
+            { name: 'jupyter', isPokemon: false },
+            { name: 'vulpix', isPokemon: true },
+            { name: 'git', isPokemon: false },
+            { name: 'flask', isPokemon: false },
+            { name: 'numpy', isPokemon: false },
+            { name: 'pandas', isPokemon: false },
+            { name: 'feebas', isPokemon: true },
+            { name: 'scikit', isPokemon: false },
+            { name: 'keras', isPokemon: false },
+            { name: 'onyx', isPokemon: true },
+            { name: 'ekans', isPokemon: true },
+            { name: 'hadoop', isPokemon: false },
+            { name: 'scala', isPokemon: false },
+            { name: 'unity', isPokemon: false }
+        ];
+
+        let score = 0;
+        let highScore = parseInt(localStorage.getItem('techPokemonHighScore')) || 0;
+        let clickedItems = new Set();
+
+        // Update high score display
+        highScoreDisplay.textContent = highScore;
+
+        // Shuffle array
+        const shuffleArray = (array) => {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        };
+
+        // Create game grid
+        const createGrid = () => {
+            techGrid.innerHTML = '';
+            shuffleArray([...terms]).forEach(term => {
+                const item = document.createElement('div');
+                item.className = 'tech-item';
+                item.textContent = term.name;
+                item.dataset.isPokemon = term.isPokemon;
+                
+                item.addEventListener('click', () => handleClick(item, term));
+                techGrid.appendChild(item);
+            });
+        };
+
+        // Handle click on item
+        const handleClick = (item, term) => {
+            if (clickedItems.has(term.name)) return;
+            
+            clickedItems.add(term.name);
+            
+            if (term.isPokemon) {
+                item.classList.add('correct');
+                score += 10;
+                gameMessage.textContent = 'Correct! That is a Pokémon!';
+            } else {
+                item.classList.add('incorrect');
+                score = Math.max(0, score - 5);
+                gameMessage.textContent = 'Wrong! That is a tech tool!';
+            }
+            
+            item.classList.add('revealed');
+            scoreDisplay.textContent = score;
+            
+            if (score > highScore) {
+                highScore = score;
+                highScoreDisplay.textContent = highScore;
+                localStorage.setItem('techPokemonHighScore', highScore);
+            }
+            
+            // Check if game is complete
+            if (clickedItems.size === terms.length) {
+                gameMessage.textContent = `Game Over! Final Score: ${score}`;
+            }
+        };
+
+        // Reset game
+        const resetGame = () => {
+            score = 0;
+            clickedItems.clear();
+            scoreDisplay.textContent = '0';
+            gameMessage.textContent = '';
+            createGrid();
+        };
+
+        // Initialize
+        resetButton.addEventListener('click', resetGame);
+        createGrid();
+    };
+
+    // Initialize game when DOM is loaded
+    initTechPokemonGame();
+
+    // Game Dropdown Functionality
+    const gameDropdownBtn = document.getElementById('game-dropdown-btn');
+    const gameSection = document.getElementById('game');
+
+    if (gameDropdownBtn && gameSection) {
+        gameDropdownBtn.addEventListener('click', () => {
+            gameDropdownBtn.classList.toggle('active');
+            gameSection.classList.toggle('active');
+        });
+    }
 }); 
