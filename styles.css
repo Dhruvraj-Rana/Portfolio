@@ -1,15 +1,16 @@
 /* Base styles */
 :root {
-    --bg-color: #ffffff;
-    --text-color: #000000;
-    --secondary-text: #777777;
-    --border-color: #eeeeee;
+    --bg-color: #f5f5f5;
+    --text-color: #222222;
+    --secondary-text: #666666;
+    --border-color: #e0e0e0;
     --accent-color: rgba(0, 0, 0, 0.05);
-    --link-border: #000000;
+    --link-border: #222222;
     --primary-color-rgb: 64, 100, 33;
     --secondary-color-rgb: 33, 64, 100;
     --process-number-color: rgba(0, 0, 0, 0.2);
     --loader-color: #243513;
+    --grid-color: rgba(200, 200, 200, 0.4);
 }
 
 /* Dark Theme Colors */
@@ -658,6 +659,23 @@ footer {
     margin-top: 4rem;
     border-top: 1px solid var(--border-color);
     font-size: 0.85rem;
+}
+
+.location-time {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#country-flag {
+    display: inline-block;
+    font-size: 1.5rem;
+    line-height: 1;
+    margin-right: 0.25rem;
+}
+
+#location-time-text {
+    display: inline-block;
 }
 
 .footer-right {
@@ -1628,4 +1646,54 @@ footer {
         padding: 0.8rem;
         font-size: 0.9rem;
     }
+}
+
+/* Grid Background Animation */
+.perspective-grid {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    perspective: 1000px;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+.grid-container {
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    left: -50%;
+    top: -50%;
+    transform-style: preserve-3d;
+    transform: rotateX(60deg) translateZ(0);
+    transition: transform 0.5s ease;
+}
+
+.horizontal-lines, .vertical-lines {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.horizontal-line, .vertical-line {
+    position: absolute;
+    background-color: var(--grid-color);
+}
+
+.horizontal-line {
+    width: 100%;
+    height: 1px;
+}
+
+.vertical-line {
+    height: 100%;
+    width: 1px;
+}
+
+[data-theme="dark"] .perspective-grid {
+    display: none;
 } 

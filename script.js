@@ -3,6 +3,60 @@ document.addEventListener('DOMContentLoaded', () => {
     // Page loader functionality
     const pageLoader = document.getElementById('page-loader');
     
+    // Perspective Grid Background
+    const initPerspectiveGrid = () => {
+        const horizontalLines = document.getElementById('horizontal-lines');
+        const verticalLines = document.getElementById('vertical-lines');
+        const gridContainer = document.getElementById('grid-container');
+        
+        if (!horizontalLines || !verticalLines || !gridContainer) return;
+        
+        // Generate horizontal lines
+        const horizontalLineCount = 30;
+        const horizontalGap = 100 / horizontalLineCount;
+        
+        for (let i = 0; i <= horizontalLineCount; i++) {
+            const line = document.createElement('div');
+            line.className = 'horizontal-line';
+            line.style.top = `${i * horizontalGap}%`;
+            horizontalLines.appendChild(line);
+        }
+        
+        // Generate vertical lines
+        const verticalLineCount = 30;
+        const verticalGap = 100 / verticalLineCount;
+        
+        for (let i = 0; i <= verticalLineCount; i++) {
+            const line = document.createElement('div');
+            line.className = 'vertical-line';
+            line.style.left = `${i * verticalGap}%`;
+            verticalLines.appendChild(line);
+        }
+        
+        // Scroll animation
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            const maxScroll = document.body.scrollHeight - window.innerHeight;
+            const scrollRatio = scrollY / maxScroll;
+            
+            // Parallax effect with subtle movement
+            const rotationX = 60 + (scrollRatio * 5); // 60-65 degree rotation
+            const translateZ = scrollRatio * -50; // -50px to 0px
+            const translateY = scrollRatio * 10; // 0px to 10px
+            
+            gridContainer.style.transform = `rotateX(${rotationX}deg) translateZ(${translateZ}px) translateY(${translateY}%)`;
+            
+            // Adjust opacity based on scroll
+            const grid = document.getElementById('perspective-grid');
+            if (grid) {
+                grid.style.opacity = Math.max(0.2, 0.6 - (scrollRatio * 0.3));
+            }
+        });
+    };
+    
+    // Initialize grid
+    initPerspectiveGrid();
+
     if (pageLoader) {
         // Hide loader after content is loaded
         window.addEventListener('load', () => {
@@ -18,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
-    // Get user's location and update time
+    // Get user's location and update time with country flag
     const updateLocationAndTime = () => {
         const now = new Date();
         const options = { 
@@ -27,36 +81,53 @@ document.addEventListener('DOMContentLoaded', () => {
             timeZoneName: 'short'
         };
         const timeString = now.toLocaleTimeString('en-US', options);
-        const locationTime = document.querySelector('footer p:first-child');
+        const locationTimeText = document.getElementById('location-time-text');
+        const countryFlag = document.getElementById('country-flag');
         
-        if (locationTime) {
-            // Try to get user's location
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(
-                    (position) => {
-                        // Use reverse geocoding to get city name
-                        const lat = position.coords.latitude;
-                        const lng = position.coords.longitude;
+        // Function to set Katpadi, India as fallback
+        const setKatpadiFallback = () => {
+            locationTimeText.textContent = `Katpadi, ${timeString.replace(/\s+/g, ' ')}`;
+            // Indian flag emoji (🇮🇳)
+            countryFlag.textContent = "🇮🇳";
+        };
+        
+        if (locationTimeText && countryFlag) {
+            // Attempt to use a more reliable geolocation service
+            try {
+                // First try a direct IP-based location service
+                fetch('https://ipapi.co/json/')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        const city = data.city || 'Katpadi';
+                        const countryCode = data.country || 'IN';
                         
-                        fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}&localityLanguage=en`)
-                            .then(response => response.json())
-                            .then(data => {
-                                const city = data.city || data.locality || 'Your Location';
-                                locationTime.textContent = `${city}, ${timeString.replace(/\s+/g, ' ')}`;
-                            })
-                            .catch(() => {
-                                // Fallback if reverse geocoding fails
-                                locationTime.textContent = `Your Location, ${timeString.replace(/\s+/g, ' ')}`;
-                            });
-                    },
-                    // Error handling for geolocation
-                    () => {
-                        locationTime.textContent = `Your Location, ${timeString.replace(/\s+/g, ' ')}`;
-                    }
-                );
-            } else {
-                // Fallback if geolocation is not supported
-                locationTime.textContent = `Your Location, ${timeString.replace(/\s+/g, ' ')}`;
+                        if (city && countryCode) {
+                            // Update location text
+                            locationTimeText.textContent = `${city}, ${timeString.replace(/\s+/g, ' ')}`;
+                            
+                            // Add country flag emoji
+                            const flagEmoji = countryCode
+                                .toUpperCase()
+                                .replace(/./g, char => 
+                                    String.fromCodePoint(char.charCodeAt(0) + 127397)
+                                );
+                            countryFlag.textContent = flagEmoji;
+                        } else {
+                            setKatpadiFallback();
+                        }
+                    })
+                    .catch(error => {
+                        console.log('Error fetching location data:', error);
+                        setKatpadiFallback();
+                    });
+            } catch (error) {
+                console.log('Error in location detection:', error);
+                setKatpadiFallback();
             }
         }
     };
@@ -116,6 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const checkbox = document.getElementById('checkbox');
     const checkboxMobile = document.getElementById('checkbox-mobile');
     const themeLabel = document.querySelector('.theme-label');
+    const perspectiveGrid = document.getElementById('perspective-grid');
     
     if (checkbox && themeLabel) {
         // Check if user preference already exists
@@ -125,6 +197,11 @@ document.addEventListener('DOMContentLoaded', () => {
             checkbox.checked = currentTheme === 'dark';
             if (checkboxMobile) checkboxMobile.checked = currentTheme === 'dark';
             themeLabel.textContent = currentTheme === 'dark' ? 'Dark Mode' : 'Light Mode';
+            
+            // Handle grid visibility based on theme
+            if (perspectiveGrid) {
+                perspectiveGrid.style.display = currentTheme === 'dark' ? 'none' : 'block';
+            }
         }
         
         // Toggle theme when checkbox changes
@@ -133,6 +210,11 @@ document.addEventListener('DOMContentLoaded', () => {
             document.documentElement.setAttribute('data-theme', theme);
             localStorage.setItem('theme', theme);
             themeLabel.textContent = theme === 'dark' ? 'Dark Mode' : 'Light Mode';
+            
+            // Toggle grid visibility
+            if (perspectiveGrid) {
+                perspectiveGrid.style.display = theme === 'dark' ? 'none' : 'block';
+            }
             
             // Keep mobile theme toggle in sync
             if (checkboxMobile) checkboxMobile.checked = theme === 'dark';
@@ -145,6 +227,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.documentElement.setAttribute('data-theme', theme);
                 localStorage.setItem('theme', theme);
                 themeLabel.textContent = theme === 'dark' ? 'Dark Mode' : 'Light Mode';
+                
+                // Toggle grid visibility
+                if (perspectiveGrid) {
+                    perspectiveGrid.style.display = theme === 'dark' ? 'none' : 'block';
+                }
                 
                 // Keep desktop theme toggle in sync
                 checkbox.checked = theme === 'dark';
